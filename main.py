@@ -82,7 +82,7 @@ def second_location():
             else:
                 popitok -= 1
                 if popitok > 0:
-                    print(f"Не правильно!! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                    print(f"Не правильно! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
                 else:
                     print("Вас ЗАКОЛОЛИ (дозой)")
                     break
