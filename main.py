@@ -31,16 +31,18 @@ def info_first_location():
 def info_third_location():
     print("Хижина шаманов - Вы стоите перед скрытой в глубинах леса хижиной, известной как Хижина Шаманов. Ее стены\n "
           "скрыты мхом , а крыша покрыта плетеньем из сухих лоз. Структура, казалось бы, сливается с окружающей\n "
-          "природой, словно выросшая из самой земли.")
+          "природой, словно выросшая из самой земли.\n"
+          "Доступные действия: Движения: WASD, загадки")
 
 
 # Третья локация
 def info_fourth_location():
-    print("Древние пирамиды- Величественные сооружения, свидетели далекого прошлого. Поднимающиеся ввысь, они словно\n"
+    print("Древние пирамиды - Величественные сооружения, свидетели далекого прошлого. Поднимающиеся ввысь, они словно\n"
           "касаются небес, а их монументальные стены излучают таинственное величие, в котором слились сила и загадка.\n"
           "Вокруг пирамид раскинулась пустынная пустота, наполненная древними тайнами и невысказанными\n"
-          "историями.Стены пирамид украшены загадочными рельефами, изображающими древних фараонов, богов и сцены из"
-          "их жизни и верований.")
+          "историями.Стены пирамид украшены загадочными рельефами, изображающими древних фараонов, богов и сцены из\n"
+          "их жизни и верований.\n"
+          "Доступные действия: Движения: WASD, Final")
 
 
 # Предистория
@@ -65,6 +67,114 @@ def history():
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.01)
+
+
+def second_location():
+    import random
+    f_puzzle = "Не отыскать её корней,\nВерхушка выше тополей.\nВсё круче вверх она идёт -\nА не растёт."
+    s_puzzle = "Без голоса кричит,\nБез крыльев — а летает,\nИ безо рта свистит,\nИ без зубов кусает."
+    t_puzzle = "Две ноги на трёх ногах,\nА четвёртая в зубах.\nВдруг четыре прибежали\nИ с безногой убежали."
+    fourth_puzzle = "А что у меня в кармане?"
+    fifth_puzzle = "Пожирает всё кругом:\nЗверя, птицу, лес и дом.\nСталь сгрызёт, железо сгложет,\nКрепкий камень уничтожит,\nВласть его всего сильней,\nДаже власти королей."
+    puzzles = [s_puzzle, t_puzzle, f_puzzle, fourth_puzzle, fifth_puzzle]
+    f_answer = 'Гора'
+    s_answer = 'Ветер'
+    t_answer = 'Человек сидит на табуретке и ест рыбу'
+    fourth_answer = 'Ключ Старших Врат'
+    fifth_answer = 'Время'
+    popitok = 3
+    while True:
+        print("Джеймс: Приветствую, мудрый Бертольд! Я ищу ключ от древних пирамид. Может быть, ты можешь помочь мне?")
+        print(
+            "Бертольд: Добро пожаловать, молодой искатель приключений. Чтобы получить ключ, тебе нужно пройти "
+            "испытание моей мудрости. Готов ли ты к вызову загадки?")
+        print("Джеймс: Конечно, я готов! Я всегда готов к новым вызовам.")
+        puzzle = random.choice(puzzles)
+        print(f"Бертольд: Великолепно! Вот моя загадка:\n{puzzle}\n")
+        if puzzle == f_puzzle:
+            print(f"Ответ (1 - 'Цветок', 2 - '{f_answer}', 3 - 'Камень'): ")
+            answer = input("Выбери правильный ответ: ")
+            if answer == "2":
+                print(
+                    "Бертольд: Отлично, Джеймс! Ты прав. Мудро мыслишь. Вот ключ от древних пирамид, он поможет тебе "
+                    "продолжить твое путешествие.\nДжеймс: Спасибо тебе, Бертольд! Я ценю твою помощь и мудрость. "
+                    "Теперь я отправлюсь дальше, к новым приключениям!")
+                return info_fourth_location(), third_location_moving()
+            else:
+                popitok -= 1
+                if popitok > 0:
+                    print(f"Не правильно!! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                else:
+                    print("Вас ЗАКОЛОЛИ (дозой)")
+                    break
+        elif puzzle == s_puzzle:
+            print(f"Ответ (1 - 'Самум', 2 - 'Буря', 3 - '{s_answer}'): ")
+            answer = input("Выбери правильный ответ: ")
+            if answer == "3":
+                print(
+                    "Бертольд: Отлично, Джеймс! Ты прав. Мудро мыслишь. Вот ключ от древних пирамид, он поможет "
+                    "тебе продолжить твое путешествие.\nДжеймс: Спасибо тебе, Бертольд! Я ценю твою помощь и "
+                    "мудрость. Теперь я отправлюсь дальше, к новым приключениям!")
+                return info_fourth_location(), third_location_moving()
+            else:
+                popitok -= 1
+                if popitok > 0:
+                    print(f"Не правильно!! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                else:
+                    print("Вас ЗАКОЛОЛИ (дозой)")
+                    break
+        elif puzzle == t_puzzle:
+            print(f"Ответ (1 - 'Человек инвалид', 2 - '{t_answer}', 3 - 'Человек инвалид НО в каляске'): ")
+            answer = input("Выбери правильный ответ: ")
+            if answer == "2":
+                print(
+                    "Бертольд: Отлично, Джеймс! Ты прав. Мудро мыслишь. Вот ключ от древних пирамид, он поможет тебе "
+                    "продолжить твое путешествие.\nДжеймс: Спасибо тебе, Бертольд! Я ценю твою помощь и мудрость. "
+                    "Теперь я отправлюсь дальше, к новым приключениям!")
+                return info_fourth_location(), third_location_moving()
+            else:
+                popitok -= 1
+                if popitok > 0:
+                    print(f"Не правильно!! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                else:
+                    print("Вас ЗАКОЛОЛИ (дозой)")
+                    break
+        elif puzzle == fourth_puzzle:
+            print(
+                f"Ответ (1 - '{fourth_answer}', 2 - 'Кошелек', 3 - 'Камень'): ")
+            answer = input("Выбери правильный ответ: ")
+            if answer == "1":
+                print(
+                    "Бертольд: Отлично, Джеймс! Ты прав. Мудро мыслишь. Вот ключ от древних пирамид, он поможет тебе "
+                    "продолжить твое путешествие.\nДжеймс: Спасибо тебе, Бертольд! Я ценю твою помощь и мудрость. "
+                    "Теперь я отправлюсь дальше, к новым приключениям!")
+                return info_fourth_location(), third_location_moving()
+            else:
+                popitok -= 1
+                if popitok > 0:
+                    print(f"Не правильно! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                else:
+                    print("Вас ЗАКОЛОЛИ (дозой)")
+                    break
+        elif puzzle == fifth_puzzle:
+            print(
+                f"Ответ (1 - '{fifth_answer}', 2 - 'Огонь', 3 - 'Охотник'): ")
+            answer = input("Выбери правильный ответ: ")
+            if answer == "1":
+                print(
+                    "Бертольд: Отлично, Джеймс! Ты прав. Мудро мыслишь. Вот ключ от древних пирамид, он поможет тебе "
+                    "продолжить твое путешествие.\nДжеймс: Спасибо тебе, Бертольд! Я ценю твою помощь и мудрость. "
+                    "Теперь я отправлюсь дальше, к новым приключениям!")
+                return info_fourth_location(), third_location_moving()
+            else:
+                popitok -= 1
+                if popitok > 0:
+                    print(f"Не правильно!! У тебя осталось {popitok} попыт{'ка' if popitok == 1 else 'ки'}")
+                else:
+                    print("Вас ЗАКОЛОЛИ")
+                    break
+        else:
+            print("Потрачено")
 
 
 def last_location():
@@ -132,14 +242,15 @@ def third_location_moving_for_quest():
 def the_end():
     import sys
     import time
-    text = ("Джеймс вздохнул с облегчением, понимая, что его миссия завершена. Он удерживал в руках Полуночный Медальон\n"
-            "— ключ к силе, но и к ответственности за его использование.Вернувшись из джунглей, Джеймс стал хранителем\n"
-            "медальона, используя его мудро и справедливо для защиты своего мира от зла. Он помнил свое приключение как\n"
-            "испытание, которое сделало его сильнее и мудрее. И, несмотря на то, что его путешествие подошло к концу,\n"
-            "новые приключения всегда ждали его впереди, ведь мир полон тайн и загадок, готовых быть раскрытыми тем,\n"
-            "кто смело идет вперед.\n"
-            ""
-            "GG")
+    text = (
+        "Джеймс вздохнул с облегчением, понимая, что его миссия завершена. Он удерживал в руках Полуночный Медальон\n"
+        "— ключ к силе, но и к ответственности за его использование.Вернувшись из джунглей, Джеймс стал хранителем\n"
+        "медальона, используя его мудро и справедливо для защиты своего мира от зла. Он помнил свое приключение как\n"
+        "испытание, которое сделало его сильнее и мудрее. И, несмотря на то, что его путешествие подошло к концу,\n"
+        "новые приключения всегда ждали его впереди, ведь мир полон тайн и загадок, готовых быть раскрытыми тем,\n"
+        "кто смело идет вперед.\n"
+        ""
+        "GG")
 
     for char in text:
         sys.stdout.write(char)
@@ -159,7 +270,7 @@ def second_location_moving():
                     print("Вы сделали 1 шаг вперед")
                     move_forward += 1
                 elif move_forward == 3:
-                    return third_location_moving()
+                    return second_location()
             elif move == "c":
                 return inventory()
         except ValueError:
@@ -177,7 +288,7 @@ def first_location_moving():
     text_for_right = False
     inventor = read_inventory()
     item_position = (3, 3)
-    door_position = (5, 3)
+    door_position = (3, 5)
     has_key = "Key" in inventor
     while True:
         try:
@@ -265,7 +376,8 @@ def check_door(x, y, door_position, has_key):
     if (x, y) == door_position:
         if has_key:
             print("Вы нашли дверь!")
-            print("Поздравляем, у вас есть ключ, вы можете открыть дверь!")
+            print("Поздравляем, у вас есть ключ, вы открыли дверь!")
+            return info_third_location(), second_location_moving()
         else:
             print("Здесь дверь!")
             print("Вам нужен ключ, чтобы открыть эту дверь.")
@@ -404,22 +516,23 @@ def start_game_fl():
             info_first_location_called = True
 
         first_location_moving()
+        return start_game_sl()
 
 
-# def start_game_sl():
-#     info_third_location_called = False
-#     second_location_called = False
-#
-#     while True:
-#         if not info_third_location_called:
-#             info_third_location()
-#             info_third_location_called = True
-#
-#         second_location_moving()
-#
-#         if not second_location_called:
-#             second_location()
-#             second_location_called = True
+def start_game_sl():
+    info_third_location_called = False
+    second_location_called = False
+
+    while True:
+        if not info_third_location_called:
+            info_third_location()
+            info_third_location_called = True
+
+        if not second_location_called:
+            second_location()
+            second_location_called = True
+
+        second_location_moving()
 
 
 def start_game_tl():
@@ -437,5 +550,6 @@ def start_game_tl():
         third_location_moving_for_quest()
 
 
+start_game_fl()
+start_game_sl()
 start_game_tl()
-
